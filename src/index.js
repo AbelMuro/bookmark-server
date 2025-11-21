@@ -5,8 +5,8 @@ const app = express();
 const PORT = 4000;
 
 /* 
-    this is where i left off, i finished designing how data will be organized in the database.
-    now i need to create the routes on the back-end that will communicate with the database
+    this is where i left off, i finished creating a route that communicates with the mysql database
+    now i need to create additional routes for the other webpages on the front end 
 */
 
 app.use(cors({
