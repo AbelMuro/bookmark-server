@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const CreateAccount = require('./Routes/POST/CreateAccount.js');
+const Login = require('./Routes/POST/Login.js');
 const app = express();
 const PORT = 4000;
 
@@ -9,6 +11,7 @@ const PORT = 4000;
     now i need to create additional routes for the other webpages on the front end 
 */
 
+app.use(cookieParser());
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST'],
@@ -17,6 +20,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(CreateAccount);
+app.use(Login);
 
 
 app.get('/', (req, res) => {
