@@ -2,20 +2,25 @@ const express = require('express');
 const db = require('../../Config/Database/db.js');
 const router = express.Router();
 
-router.post('/create_account', (req, res) => {
+router.post('/create_account', async (req, res) => {
     const {email, name, password} = req.body;
 
-    db.execute(
-        'INSERT INTO accounts (email, password, name) VALUE (?, ?, ?)',
-        [email, password, name],
-        (err, results) => {
-            if(err && err.code === 'ER_DUP_ENTRY')
-                return res.status(500).send('Email is already registered');
+    try{
+        await db.execute(
+            'INSERT INTO accounts (email, password, name) VALUE (?, ?, ?)',
+            [email, password, name]);
 
-            const message = results.message;
-            res.status(200).send(message);
+        res.status(200).send('Account has been created');
+
+    }
+    catch(error){
+        if(error.code === 'ER_DUP_ENTRY')
+            res.status(500).send('Email is already registered');
+        else{
+            const message = error.message;
+            res.status(500).send(message);            
         }
-    )
+    }
 
 })
 
