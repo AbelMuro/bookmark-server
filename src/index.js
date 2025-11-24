@@ -3,6 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const CreateAccount = require('./Routes/POST/CreateAccount.js');
 const CreateToken = require('./Routes/POST/CreateToken.js');
+const ResetPassword = require('./Routes/POST/ResetPassword.js');
 const Login = require('./Routes/POST/Login.js');
 const app = express();
 const PORT = 4000;
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(CreateAccount);
 app.use(CreateToken);
 app.use(Login);
+app.use(ResetPassword);
 
 
 app.get('/', (req, res) => {
