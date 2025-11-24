@@ -9,8 +9,7 @@ const app = express();
 const PORT = 4000;
 
 /* 
-    this is where i left off, i need to finish using the promise based method of performing queries to the database
-    more specifically, on the ResetPassword component, then i need to test out the forgot-reset feature
+    this is where i left off, i need to continue testing the hashed password in the login component
 */
 
 app.use(cookieParser());
