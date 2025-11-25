@@ -28,13 +28,11 @@ router.post('/create_token', async (req, res) => {
             from: process.env.email,
             to: email,
             subject: 'Reset Link for Bookmark manager app',
-            text: `Please click on the following link to reset your password ${resetLink}
-                    Token will expire in 60 minutes.
-                `
+            text: `Please click on the following link to reset your password ${resetLink}. Token will expire in 60 minutes.`
         }
 
 
-        const results = await db.execute(
+        await db.execute(
             'UPDATE accounts SET reset_token = ?, reset_token_expiration = ? WHERE email = ?',
             [resetPasswordToken, resetPasswordExpires, email])        
 

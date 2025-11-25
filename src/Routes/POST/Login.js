@@ -8,7 +8,7 @@ config();
 
 router.post('/login', async (req, res) => {
     const {email, password} = req.body;
-    const JWT_SECRET = process.env.JWT_TOKEN;
+    const JWT_SECRET = process.env.JWT_SECRET;
 
     try{
         const [accounts] = await db.execute(
