@@ -5,18 +5,20 @@ const CreateAccount = require('./Routes/POST/CreateAccount.js');
 const CreateToken = require('./Routes/POST/CreateToken.js');
 const ResetPassword = require('./Routes/POST/ResetPassword.js');
 const Login = require('./Routes/POST/Login.js');
+const Logout = require('./Routes/DELETE/Logout.js');
 const app = express();
 const PORT = 4000;
 
-/* 
-    this is where i left off, i need to continue testing the hashed password in the login component
+/*
+    I am currently on the AddBookmark route
 */
+
 
 app.use(cookieParser());
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', ''],
     credentials: true,
 }));
 app.use(express.json());
@@ -24,6 +26,7 @@ app.use(CreateAccount);
 app.use(CreateToken);
 app.use(Login);
 app.use(ResetPassword);
+app.use(Logout);
 
 
 app.get('/', (req, res) => {
