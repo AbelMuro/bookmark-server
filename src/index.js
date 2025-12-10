@@ -6,12 +6,9 @@ const CreateToken = require('./Routes/POST/CreateToken.js');
 const ResetPassword = require('./Routes/POST/ResetPassword.js');
 const Login = require('./Routes/POST/Login.js');
 const Logout = require('./Routes/DELETE/Logout.js');
+const addBookmark = require('./Routes/POST/AddBookmark.js');
 const app = express();
 const PORT = 4000;
-
-/*
-    I am currently on the AddBookmark route
-*/
 
 
 app.use(cookieParser());
@@ -27,6 +24,7 @@ app.use(CreateToken);
 app.use(Login);
 app.use(ResetPassword);
 app.use(Logout);
+app.use(addBookmark);
 
 
 app.get('/', (req, res) => {
