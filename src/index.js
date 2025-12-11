@@ -7,6 +7,7 @@ const ResetPassword = require('./Routes/POST/ResetPassword.js');
 const Login = require('./Routes/POST/Login.js');
 const Logout = require('./Routes/DELETE/Logout.js');
 const addBookmark = require('./Routes/POST/AddBookmark.js');
+const getBookmarks = require('./Routes/GET/GetBookmarks.js');
 const app = express();
 const PORT = 4000;
 
@@ -25,6 +26,7 @@ app.use(Login);
 app.use(ResetPassword);
 app.use(Logout);
 app.use(addBookmark);
+app.use(getBookmarks);
 
 
 app.get('/', (req, res) => {
