@@ -6,7 +6,7 @@ const db = require('../../Config/Database/db.js');
 config();
 
 router.post('/add_bookmark', async (req, res) => {
-    const {title, desc, url, tags} = req.body;
+    const {title, desc, url, tags, createdAt} = req.body;
     const JWT_SECRET = process.env.JWT_SECRET;
     const token = req.cookies.accessToken;
 
@@ -17,9 +17,9 @@ router.post('/add_bookmark', async (req, res) => {
         const decodedToken = jwt.verify(token, JWT_SECRET);
         const account_id = decodedToken.id;
 
-        const result = await db.execute(
-            'INSERT INTO bookmarks (account_id, title, description, url, tags) VALUES (?, ?, ?, ?, ?)',
-            [account_id, title, desc, url, tags]);
+        await db.execute(
+            'INSERT INTO bookmarks (account_id, title, description, url, tags, created_at) VALUES (?, ?, ?, ?, ?, ?)',
+            [account_id, title, desc, url, tags, createdAt]);
 
         res.status(200).send('Bookmark has been saved');
 
