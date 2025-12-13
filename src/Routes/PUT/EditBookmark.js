@@ -3,12 +3,12 @@ const db = require('../../Config/Database/db');
 const router = express.Router();
 
 router.put('/edit_bookmark', async (req, res) => {
-    const {title, description, bookmarkId, url, tags} = req.body;
+    const {title, description, bookmarkId, url, tags, dateUpdated} = req.body;
 
     try{
-        const results = await db.execute(
-            'UPDATE bookmarks SET title = ?, description = ?, url = ?, tags = ? WHERE id = ?',
-            [title, description, url, tags, bookmarkId]
+        await db.execute(
+            'UPDATE bookmarks SET title = ?, description = ?, url = ?, tags = ?, last_updated = ? WHERE id = ?',
+            [title, description, url, tags, dateUpdated, bookmarkId]
         )
 
         res.status(200).send('Bookmark has been updated');

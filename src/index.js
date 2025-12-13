@@ -9,6 +9,7 @@ const Logout = require('./Routes/DELETE/Logout.js');
 const addBookmark = require('./Routes/POST/AddBookmark.js');
 const getBookmarks = require('./Routes/GET/GetBookmarks.js');
 const editBookmark = require('./Routes/PUT/EditBookmark.js');
+const updateBookmark = require('./Routes/PUT/UpdateBookmark.js');
 const app = express();
 const PORT = 4000;
 
@@ -29,6 +30,7 @@ app.use(Logout);
 app.use(addBookmark);
 app.use(getBookmarks);
 app.use(editBookmark);
+app.use(updateBookmark);
 
 
 app.get('/', (req, res) => {
