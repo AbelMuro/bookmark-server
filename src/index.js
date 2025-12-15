@@ -11,6 +11,7 @@ const getBookmarks = require('./Routes/GET/GetBookmarks.js');
 const editBookmark = require('./Routes/PUT/EditBookmark.js');
 const updateBookmark = require('./Routes/PUT/UpdateBookmark.js');
 const archiveBookmark = require('./Routes/PUT/ArchiveBookmark.js');
+const pinBookmark = require('./Routes/PUT/PinBookmark.js');
 const app = express();
 const PORT = 4000;
 
@@ -33,6 +34,7 @@ app.use(getBookmarks);
 app.use(editBookmark);
 app.use(updateBookmark);
 app.use(archiveBookmark);
+app.use(pinBookmark);
 
 app.get('/', (req, res) => {
     res.send('Hello world')
