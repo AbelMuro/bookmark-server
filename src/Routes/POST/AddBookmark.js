@@ -22,7 +22,6 @@ router.post('/add_bookmark', async (req, res) => {
             [account_id, title, desc, url, tags, createdAt]);
 
         res.status(200).send('Bookmark has been saved');
-
     }
     catch(error){
         const message = error.message;

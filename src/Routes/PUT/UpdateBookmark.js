@@ -4,11 +4,13 @@ const router = express.Router();
 
 router.put('/update_bookmark', async (req, res) => {
     const {bookmarkId, prevViews} = req.body;
+    const date = new Date();
+    const lastTimeVisited = date.getTime();
 
     try{
         await db.execute(
-            'UPDATE bookmarks SET views = ? WHERE id = ?',
-            [prevViews + 1, bookmarkId]
+            'UPDATE bookmarks SET views = ?, last_time_visited = ? WHERE id = ?',
+            [prevViews + 1, lastTimeVisited, bookmarkId]
         )
         
         res.status(200).send("Bookmarks' views has been updated");
