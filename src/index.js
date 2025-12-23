@@ -13,6 +13,7 @@ const updateBookmark = require('./Routes/PUT/UpdateBookmark.js');
 const archiveBookmark = require('./Routes/PUT/ArchiveBookmark.js');
 const pinBookmark = require('./Routes/PUT/PinBookmark.js');
 const getTags = require('./Routes/GET/GetTags.js');
+const deleteBookmark = require('./Routes/DELETE/DeleteBookmark.js');
 const app = express();
 const PORT = 4000;
 
@@ -37,6 +38,7 @@ app.use(updateBookmark);
 app.use(archiveBookmark);
 app.use(pinBookmark);
 app.use(getTags);
+app.use(deleteBookmark);
 
 app.get('/', (req, res) => {
     res.send('Hello world')
