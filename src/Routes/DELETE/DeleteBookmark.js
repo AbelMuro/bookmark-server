@@ -11,8 +11,6 @@ router.delete('/delete_bookmark/:id', async (req, res) => {
             [bookmarkId]
         )
 
-        console.log(result);
-
         res.status(200).send('Bookmark has been successfully deleted');
     }
     catch(error){
