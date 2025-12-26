@@ -3,4 +3,4 @@ const app = require('../src/index.js');
 
 const handler = serverless(app);  		      
 
-module.exports.handler = handler      
+module.exports.handler = handler;      
