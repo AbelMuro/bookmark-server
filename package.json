@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.15.3",
     "nodemailer": "^7.0.10",
-    "serverless-http": "^4.0.0"
+    "serverless-http": "^4.0.0",
+    "uuid": "^13.0.0"
   }
 }

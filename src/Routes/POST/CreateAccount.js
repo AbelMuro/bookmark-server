@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const {v4 : uuid} = require('uuid');
 const db = require('../../Config/Database/db.js');
 const router = express.Router();
 
@@ -7,11 +8,12 @@ router.post('/create_account', async (req, res) => {
     const {email, name, password} = req.body;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    const accountId = uuid();
 
     try{
         await db.execute(
-            'INSERT INTO accounts (email, password, name) VALUE (?, ?, ?)',
-            [email, hashedPassword, name]);
+            'INSERT INTO accounts (id, email, password, name) VALUE (?, ?, ?)',
+            [accountId, email, hashedPassword, name]);
 
         res.status(200).send('Account has been created');
     }
