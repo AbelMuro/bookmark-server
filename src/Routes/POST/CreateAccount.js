@@ -1,7 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const {v4 : uuid} = require('uuid');
 const db = require('../../Config/Database/db.js');
 const router = express.Router();
 
