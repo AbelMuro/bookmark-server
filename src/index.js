@@ -20,7 +20,7 @@ const PORT = 4000;
 
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://bookmark-manager-app-front-end.netlify.app/',
+    origin: 'https://bookmark-manager-app-front-end.netlify.app',
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     allowedHeaders: ['Content-Type', 'Authorization', ''],
     credentials: true,
