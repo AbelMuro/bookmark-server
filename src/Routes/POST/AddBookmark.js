@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {v4: uuid} = require('uuid');
+const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const {config} = require('dotenv');
 const db = require('../../Config/Database/db.js');
@@ -17,7 +17,7 @@ router.post('/add_bookmark', async (req, res) => {
     try{
         const decodedToken = jwt.verify(token, JWT_SECRET);
         const account_id = decodedToken.id;
-        const bookmarkId = uuid();
+        const bookmarkId = crypto.randomUUID();
 
         await db.execute(
             'INSERT INTO bookmarks (id, account_id, title, description, url, tags, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
