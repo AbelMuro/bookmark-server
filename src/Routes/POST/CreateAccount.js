@@ -12,7 +12,7 @@ router.post('/create_account', async (req, res) => {
 
     try{
         await db.execute(
-            'INSERT INTO accounts (id, email, password, name) VALUE (?, ?, ?)',
+            'INSERT INTO accounts (id, email, password, name) VALUE (?, ?, ?, ?)',
             [accountId, email, hashedPassword, name]);
 
         res.status(200).send('Account has been created');
