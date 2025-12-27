@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
         const hashedPassword = accounts[0].password;
         const match = await bcrypt.compare(password, hashedPassword);
         if(!match)
-            return res.status(401).send('Email or password is incorrect');
+            return res.status(402).send('Email or password is incorrect');
 
         const token = jwt.sign({...accounts[0]}, JWT_SECRET);
         res.cookie('accessToken', token, {
@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
 
     catch(error){
         if(error.code)
-            res.status(404).send('Account is not registered');
+            res.status(402).send('Account is not registered');
         else{
             const message = error.message;
             res.status(500).send(message);            
