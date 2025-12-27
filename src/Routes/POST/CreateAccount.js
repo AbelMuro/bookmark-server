@@ -19,7 +19,7 @@ router.post('/create_account', async (req, res) => {
     }
     catch(error){
         if(error.code === 'ER_DUP_ENTRY')
-            res.status(500).send('Email is already registered');
+            res.status(402).send('Email is already registered');
         else{
             const message = error.message;
             res.status(500).send(message);            
