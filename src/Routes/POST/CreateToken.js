@@ -13,7 +13,7 @@ router.post('/create_token', async (req, res) => {
         const resetToken = crypto.randomBytes(32).toString('hex');
         const resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
         const resetPasswordExpires = Date.now() + 10 * 60 * 1000;
-        const resetLink = `http://localhost:3000/reset/${resetToken}`;
+        const resetLink = `https://bookmark-manager-app-front-end.netlify.app/reset/${resetToken}`;
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             secure: true,
