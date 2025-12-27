@@ -25,7 +25,6 @@ router.post('/create_account', async (req, res) => {
             res.status(500).send(message);            
         }
     }
-
 })
 
 module.exports = router;
